@@ -13,4 +13,5 @@ class Category(Base):
     type = Column(String(50), nullable=False)
     created_at = Column(TIMESTAMP, server_default=func.now())
 
+    transactions = relationship("Transaction", back_populates="category")    
     user = relationship("User", back_populates="categories")

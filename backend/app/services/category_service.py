@@ -25,7 +25,13 @@ def create_category(db: Session, category: CategoryCreate):
     return db_category
 
 def get_category_by_id(db: Session, category_id: int):
-    return db.query(Category).filter(Category.id == category_id).first()
+    
+    categoria = db.query(Category).filter(Category.id == category_id).first()
+    
+    if categoria:
+        return categoria
+    else: 
+        return None
 
 def list_category(db: Session, user_id: int):
     return db.query(Category).filter(Category.user_id == user_id).all()

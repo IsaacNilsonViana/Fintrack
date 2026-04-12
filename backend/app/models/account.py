@@ -14,5 +14,6 @@ class Account(Base):
     balance = Column(DECIMAL(10, 2), default=0)
     created_at = Column(TIMESTAMP, server_default=func.now())
     updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now())
-    
+
+    transactions = relationship("Transaction", back_populates="account")    
     user = relationship("User", back_populates="accounts")
